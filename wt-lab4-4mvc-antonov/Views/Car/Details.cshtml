@@ -1,0 +1,47 @@
+﻿@model wt_lab4_4mvc_antonov.Models.Car
+
+@{
+    ViewData["Title"] = "Автомобиль";
+}
+
+<div class="container py-4">
+    <div class="card shadow-sm rounded-4">
+        <div class="card-body">
+            <h1 class="fw-bold mb-3">@Model.Brand @Model.Model</h1>
+            <span class="badge bg-secondary mb-3">ID: @Model.Id</span>
+
+            <dl class="row">
+                <dt class="col-sm-3">Марка</dt>
+                <dd class="col-sm-9">@Model.Brand</dd>
+
+                <dt class="col-sm-3">Модель</dt>
+                <dd class="col-sm-9">@Model.Model</dd>
+
+                <dt class="col-sm-3">Год выпуска</dt>
+                <dd class="col-sm-9">@Model.Year</dd>
+
+                <dt class="col-sm-3">Цена за сутки</dt>
+                <dd class="col-sm-9">@Model.PricePerDay ₽</dd>
+
+                <dt class="col-sm-3">Статус</dt>
+                <dd class="col-sm-9">
+                    @if (Model.IsAvailable)
+                    {
+                        <span class="badge bg-success">Доступен</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Занят</span>
+                    }
+                </dd>
+            </dl>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                ← Назад к списку
+            </a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                Изменить
+            </a>
+        </div>
+    </div>
+</div>
